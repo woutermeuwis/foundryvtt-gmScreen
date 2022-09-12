@@ -1,6 +1,9 @@
 # GM Screen
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-gmScreen%2Freleases%2Flatest)
@@ -8,10 +11,8 @@
 [![Foundry Hub Endorsements](https://img.shields.io/endpoint?logoColor=white&url=https%3A%2F%2Fwww.foundryvtt-hub.com%2Fwp-json%2Fhubapi%2Fv1%2Fpackage%2Fgm-screen%2Fshield%2Fendorsements)](https://www.foundryvtt-hub.com/package/gm-screen/)
 [![Foundry Hub Comments](https://img.shields.io/endpoint?logoColor=white&url=https%3A%2F%2Fwww.foundryvtt-hub.com%2Fwp-json%2Fhubapi%2Fv1%2Fpackage%2Fgm-screen%2Fshield%2Fcomments)](https://www.foundryvtt-hub.com/package/gm-screen/)
 
-
 ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-gmScreen%2Fmain%2Fsrc%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
 ![Manifest+ Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-gmScreen%2Fmain%2Fsrc%2Fmodule.json&label=Manifest%2B%20Version&query=$.manifestPlusVersion&colorB=blue)
-
 
 [![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 [![patreon](https://img.shields.io/badge/-patreon-%23FF424D)](https://www.patreon.com/ElfFriend_DnD)
@@ -43,14 +44,15 @@ https://github.com/ElfFriend-DnD/foundryvtt-gmScreen/releases/latest/download/mo
 ## Screenshots
 
 ### GM View
+
 ![GM Screen Grid Tab with Combat information.](readme-img/combat-tab.png)
 ![GM Screen Grid Tab with Rules information.](readme-img/rules-tab.png)
 ![GM Screen Grid Tab with Notes information.](readme-img/notes-tab.png)
 ![GM Screen Grid Tab with a Player Cheat Sheet.](readme-img/cheat-sheet-tab.png)
 
 ### Player View (with a tab set to be shared)
-![Demonstration of the GM Screen Grid from the player's perspective.](readme-img/cheet-sheet-player.png)
 
+![Demonstration of the GM Screen Grid from the player's perspective.](readme-img/cheet-sheet-player.png)
 
 ## Configuration
 
@@ -72,6 +74,7 @@ https://github.com/ElfFriend-DnD/foundryvtt-gmScreen/releases/latest/download/mo
 Note that changing the grid dimensions after populating the grid might cause unexpected results, and odds are you will have to clear the grid and repopulate things.
 
 ### Tab Configuration
+
 ![Screenshot of the GM Screen Tab Configuration](readme-img/tab-config.png)
 
 | **Name**             | Description                                                                                                                          |
@@ -90,7 +93,6 @@ It is possible to select a specific sheet for use when an Entity is rendered in 
 
 ![Screenshot of the Entity Sheet Configuration](readme-img/entity-sheet-config.png)
 
-
 ## Compatibility
 
 I'm honestly not sure how well this will play with modules that make changes to how journal articles or roll tables interact.
@@ -107,6 +109,7 @@ I'm honestly not sure how well this will play with modules that make changes to 
 ## API
 
 After the hook `gmScreenReady` is fired, the following api methods are expected to be on `game.modules.get('gm-screen')?.api`:
+
 ### `toggleGmScreenVisibility(isOpen: boolean)`
 
 Opens or Closes the GM Screen. By default will toggle the current state.
@@ -116,7 +119,6 @@ game.modules.get('gm-screen')?.api?.toggleGmScreenVisibility(false); // always c
 game.modules.get('gm-screen')?.api?.toggleGmScreenVisibility(true); // always opens
 game.modules.get('gm-screen')?.api?.toggleGmScreenVisibility(); // always toggles
 ```
-
 
 ### `Hooks.callAll('gmScreenOpenClose', cb)`
 
