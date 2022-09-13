@@ -571,7 +571,7 @@ export class GmScreenApplication extends Application {
     }
 
     $('.gm-screen-button').on('contextmenu', () => {
-      const config = new GmScreenSettings({});
+      const config = new GmScreenSettings({}, {});
       config.render(true);
     });
 
@@ -670,7 +670,7 @@ export class GmScreenApplication extends Application {
 
     if (gmScreenSpecificSheetFlag && (relevantDocument instanceof Item || relevantDocument instanceof Actor)) {
       const gmScreenSpecificSheetConstructor =
-        CONFIG[relevantDocument.documentName]?.sheetClasses?.[relevantDocument.type]?.[gmScreenSpecificSheetFlag]?.cls;
+        CONFIG[relevantDocument.documentName]?.documentClass?.[relevantDocument.type]?.[gmScreenSpecificSheetFlag]?.cls;
       sheetClass = gmScreenSpecificSheetConstructor ?? sheetClass;
     }
 
@@ -926,8 +926,7 @@ export class GmScreenApplication extends Application {
       return false;
     }
 
-    const entityUuid = `${data.pack ? `Compendium.${data.pack}` : data.type}.${data.id}`;
-
+    const entityUuid = data.uuid;
     const gridElementPosition = getGridElementsPosition($(event.target).closest('.gm-screen-grid-cell'));
     const newEntryId = `${gridElementPosition.x}-${gridElementPosition.y}`;
 

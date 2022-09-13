@@ -212,7 +212,7 @@ async function clean() {
  * Link build to User Data folder
  */
 async function linkUserData() {
-  const name = path.basename(path.resolve('.'));
+  const name = "gm-screen";
   const config = fs.readJSONSync('foundryconfig.json');
 
   let destDir;

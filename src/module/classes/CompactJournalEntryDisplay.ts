@@ -3,6 +3,7 @@ import { TEMPLATES } from '../constants';
 
 export class CompactJournalEntryDisplay extends JournalSheet {
   cellId: string;
+  enrichedJournal: string;
 
   constructor(object, options) {
     super(object, options);
@@ -22,7 +23,7 @@ export class CompactJournalEntryDisplay extends JournalSheet {
 
   /** @override */
   get template() {
-    if (this._sheetMode === 'image') return ImagePopout.defaultOptions.template;
+    if (this._sheetMode === 'image') return ImagePopout.defaultOptions.template ?? '';
     return TEMPLATES.compactJournalEntry;
   }
 
@@ -52,5 +53,15 @@ export class CompactJournalEntryDisplay extends JournalSheet {
   /** @override */
   get id() {
     return `gmscreen-journal-${this.object.id}`;
+  }
+
+  /** @override */
+  async getData(options) {
+    const journalData = await super.getData(options);
+    const enrichedContent = TextEditor.enrichHTML(journalData.data["pages"].map(page=> '<h1>' + page.name + '</h1>'+ page.text.content).join('\n'), {});
+    return{
+      ...journalData,
+      enrichedContent: enrichedContent
+    };
   }
 }

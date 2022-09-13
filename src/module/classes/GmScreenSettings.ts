@@ -15,12 +15,17 @@ const defaultGmScreenConfig: GmScreenConfig = {
 };
 
 export class GmScreenSettings extends FormApplication {
+
+  constructor(object, options,) {
+    super(object, options);
+  };
+
   static init() {
     getGame().settings.registerMenu(MODULE_ID, 'menu', {
       name: `${MODULE_ABBREV}.settings.${MySettings.gmScreenConfig}.Name`,
       label: `${MODULE_ABBREV}.settings.${MySettings.gmScreenConfig}.Label`,
       icon: 'fas fa-table',
-      type: GmScreenSettings,
+      type: GmScreenSettings as ConstructorOf<FormApplication>,
       restricted: true,
       hint: `${MODULE_ABBREV}.settings.${MySettings.gmScreenConfig}.Hint`,
     });

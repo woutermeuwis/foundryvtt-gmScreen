@@ -75,32 +75,36 @@ export class CompactRollTableDisplay extends RollTableConfig {
     // super.activateListeners(html);
   }
 
-  getData() {
-    const sheetData = super.getData();
+  async getData() {
+    const sheetData = await super.getData();
+    //
+    // // TODO: Rolltable.Result and Results wrong
+    // const enrichedResults = sheetData.results.map((result) => {
+    //   let label: string;
+    //
+    //   switch (result.type) {
+    //     case CONST.TABLE_RESULT_TYPES.COMPENDIUM: {
+    //       label = `@Compendium[${result.collection}.${result.resultId}]{${result.text}}`;
+    //       break;
+    //     }
+    //     case CONST.TABLE_RESULT_TYPES.ENTITY: {
+    //       label = `@${result.collection}[${result.resultId}]{${result.text}}`;
+    //       break;
+    //     }
+    //     default:
+    //       label = result.text;
+    //   }
+    //
+    //   return {
+    //     ...result,
+    //     label,
+    //   };
+    // });
+    //
+    // return { ...sheetData, enrichedResults };
 
-    // TODO: Rolltable.Result and Results wrong
-    const enrichedResults = sheetData.results.map((result) => {
-      let label: string;
-
-      switch (result.type) {
-        case CONST.TABLE_RESULT_TYPES.COMPENDIUM: {
-          label = `@Compendium[${result.collection}.${result.resultId}]{${result.text}}`;
-          break;
-        }
-        case CONST.TABLE_RESULT_TYPES.ENTITY: {
-          label = `@${result.collection}[${result.resultId}]{${result.text}}`;
-          break;
-        }
-        default:
-          label = result.text;
-      }
-
-      return {
-        ...result,
-        label,
-      };
-    });
-
-    return { ...sheetData, enrichedResults };
+    const result = sheetData.results;
+    var enriched = {...result, label: ""};
+    return {...sheetData, enriched};
   }
 }
