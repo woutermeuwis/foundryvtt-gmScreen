@@ -266,13 +266,12 @@ function updateManifest(cb) {
   const packageJson = fs.readJSONSync('package.json');
   const config = getConfig(),
     manifest = getManifest(),
-    rawURL = config.rawURL,
     repoURL = config.repository,
     manifestRoot = manifest.root;
 
   if (!config) cb(Error(chalk.red('foundryconfig.json not found')));
   if (!manifest) cb(Error(chalk.red('Manifest JSON not found')));
-  if (!rawURL || !repoURL) cb(Error(chalk.red('Repository URLs not configured in foundryconfig.json')));
+  if (!repoURL) cb(Error(chalk.red('Repository URLs not configured in foundryconfig.json')));
 
   try {
     const version = argv.update || argv.u;
